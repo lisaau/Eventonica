@@ -1,0 +1,15 @@
+{
+  "name": "Eventonica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "eventonica-EventRecommender.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^3.5.0"
+  }
+}
