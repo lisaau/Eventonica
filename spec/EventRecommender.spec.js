@@ -88,7 +88,7 @@ describe("EventRecommender", () => {
 
     describe("getFormattedDate", () => {
       it("should check that the date is formatted correctly", () => {
-        expect(er.events[0].getFormattedDate()).toEqual('2020-02-03');
+        expect(er.events[0].getFormattedDate()).toEqual('Feb 3rd 2020');
       })
     })
 });

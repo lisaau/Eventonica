@@ -26,6 +26,7 @@
                 <input type="text" id="add-user-name">
                 <br/>
                 <!-- Add more form fields here -->
+                <p id="add-user-announcement"></p>
                 <input type="submit" id="add-user-submit">
             </form>
         </div>
@@ -57,8 +58,17 @@
                 <label>Event name:</label>
                 <input type="text" id="add-event-name">
                 <br/>
-                <!-- Add more form fields here -->
+                <label>Event date:</label>
+                <input type="text" id="add-event-date">
+                <br/>
+                <label>Event category:</label>
+                <input type="text" id="add-event-category">
+                <br/>
+                <label>Event description:</label>
+                <input type="text" id="add-event-description">
+                <br/>
                 <input type="submit" id="add-event-submit">
+                <p id="add-event-announcement"></p>
             </form>
         </div>
 
@@ -102,7 +112,7 @@
             <input type="submit" id="category-search-submit">
         </form>
         <h4>Results:</h4>
-        <ol>
+        <ol id="category-search-result">
             <!-- Use jQuery to add search results here-->
         </ol>
     </div>

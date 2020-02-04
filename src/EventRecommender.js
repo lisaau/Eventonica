@@ -10,9 +10,9 @@ class EventRecommender {
         this.users = [];
     }
 
-    addEvent(eventName, date, category) {
+    addEvent(eventName, date, category, eventID, description) {
     // Adds a new Event to the System
-        this.events.push(new Event(eventName, date, category));
+        this.events.push(new Event(eventName, date, category, eventID, description));
     }
 
     addUser(userName, userID) {
@@ -67,15 +67,16 @@ class EventRecommender {
 }
 
 class Event {
-    constructor(eventName, date, category, eventID) {
+    constructor(eventName, date, category, eventID, description) {
         this.eventName = eventName;
         this.date = date; // expect date object in input
         this.category = category;
-        this.eventID = eventID
+        this.eventID = eventID;
+        this.description = description;
     }
 
     getFormattedDate() {
-        return moment(this.date).format('YYYY-MM-DD');
+        return moment(this.date).format('MMM Do YYYY');
     }
 }
 
