@@ -1,5 +1,7 @@
-var moment = require('moment');
-moment().format();
+if (!moment) {
+    var moment = require('moment');
+    moment().format();   
+}
 
 class EventRecommender {
     constructor() {
@@ -13,9 +15,9 @@ class EventRecommender {
         this.events.push(new Event(eventName, date, category));
     }
 
-    addUser(userName) {
+    addUser(userName, userID) {
     // Adds a new User to the System
-        this.users.push(new User(userName));
+        this.users.push(new User(userName, userID));
     }
 
     saveUserEvent(personObject, eventObject){
@@ -30,9 +32,9 @@ class EventRecommender {
         }
     }
 
-    deleteUser(name) {
-    // Deletes a User from the system
-        this.users = this.users.filter(user => user.userName !== name);
+    deleteUser(userID) {
+    // Deletes a User from the system based on userID
+        this.users = this.users.filter(user => user.userID !== userID);
     }
    
     deleteEvent(title) {
@@ -55,17 +57,21 @@ class EventRecommender {
         return eventsOnGivenDate;
     }
     
-    findEventsbyCategory(category){
+    findEventsByCategory(category){
     // Returns all events in a given category
-        return this.events.filter(event => event.category === category);
+        return this.events.filter(event => {
+            let formattedCatgegory = event.category.toLowerCase();
+            return formattedCatgegory === category.toLowerCase();
+        });
     }
 }
 
 class Event {
-    constructor(eventName, date, category) {
+    constructor(eventName, date, category, eventID) {
         this.eventName = eventName;
         this.date = date; // expect date object in input
         this.category = category;
+        this.eventID = eventID
     }
 
     getFormattedDate() {
@@ -74,10 +80,13 @@ class Event {
 }
 
 class User {
-    constructor(userName) {
+    constructor(userName, userID) {
         this.userName = userName;
+        this.userID = userID;
         this.personalEvents = [];
     }
 }
 
-module.exports = { EventRecommender, User, Event}
+if (typeof module != 'undefined'){
+    module.exports = { EventRecommender, User,  Event} 
+}

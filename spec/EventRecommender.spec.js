@@ -1,4 +1,4 @@
-const { EventRecommender, User, Event } = require('../src/eventonica-EventRecommender.js'); // Update with your class names and file name
+const { EventRecommender, User, Event } = require('../src/EventRecommender.js'); // Update with your class names and file name
 let er; 
 
 describe("EventRecommender", () => {
@@ -40,8 +40,8 @@ describe("EventRecommender", () => {
   
     describe("deleteUser", () => {
       it("removes a User from the system", () => {
-        er.addUser("User's Name");
-        er.deleteUser("User's Name");
+        er.addUser("User's Name", 12345);
+        er.deleteUser(12345);
         expect(er.users.length).toEqual(0);
       });
     });
@@ -55,16 +55,16 @@ describe("EventRecommender", () => {
     });
 
 
-    describe("findEventsbyCategory", () => {
+    describe("findEventsByCategory", () => {
       it("returns array of events with the specified category", () => {
         // check that the result is an array
-        expect(Array.isArray(er.findEventsbyCategory("Concert"))).toBe(true);
+        expect(Array.isArray(er.findEventsByCategory("Concert"))).toBe(true);
 
         // has the correct length
-        expect(er.findEventsbyCategory("Concert").length).toEqual(2);
+        expect(er.findEventsByCategory("Concert").length).toEqual(2);
 
         // check that each event in the resulting array is of the specified category
-        for (let event of er.findEventsbyCategory("Concert")) {
+        for (let event of er.findEventsByCategory("Concert")) {
           expect(event.category).toEqual("Concert");
         }
       });
