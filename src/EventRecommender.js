@@ -113,53 +113,6 @@ class User {
     }
 }
 
-const eventRecommender = new EventRecommender();
-eventRecommender.addUser("person1", 12345);
-eventRecommender.addUser("person2", 12346);
-eventRecommender.addUser("person3", 12347);
-eventRecommender.addEvent("Event 1", new Date(2020, 01, 03), "Concert", 11111,  "Description on Event 1");
-eventRecommender.addEvent("Event 2", new Date(2020, 02, 14), "Concert", 22222, "Description on Event 2");
-eventRecommender.addEvent("Event 3", new Date(2020, 04, 17), "Sport", 33333, "Description on Event 3");
-eventRecommender.addEvent("Event 4", new Date(2020, 05, 05), "Art and Theater", 44444, "Description on Event 4");
-eventRecommender.saveUserEvent(12345, 11111);
-eventRecommender.saveUserEvent(12345, 22222);
-eventRecommender.saveUserEvent(12346, 22222);
-// eventRecommender.saveUserEvent(12340, 11111);
-// console.log(eventRecommender.users);
-// console.log(eventRecommender.users[0]);
-// console.log(eventRecommender.getBookmarkedEventsByUser(12345));
-// console.log(eventRecommender.getUserByID(1));
-// console.log(typeof eventRecommender.getEventByID(11111).eventName); // string
-// console.log(eventRecommender.bookmarkedEvents);
-
-function displayBookmarkedEvents() {
-    let displayBookmarkedEventsText = '';
-    
-    for (let userid in eventRecommender.bookmarkedEvents) { 
-        // let userString = `${userid}: `;
-        let userString = `${eventRecommender.getUserByID( parseInt(userid) ).userName}: `;
-        // console.log("userString: ", userString);
-        
-        let userSavedEvents = eventRecommender.bookmarkedEvents[userid]; // array
-        // console.log("Saved events for user:", userSavedEvents);
-        
-        // getting event names for events in userSavedEvents
-        for (let [i, eventid] of userSavedEvents.entries()) {
-            let nameOfEvent = eventRecommender.getEventByID(eventid).eventName; // string
-            // console.log("Name of event:", nameOfEvent);
-
-            // format string different if at the last element of array
-            (userSavedEvents.length - 1 === i) ? userString += `${nameOfEvent}` : userString += `${nameOfEvent}, `
-        }
-        //USE THIS FOR HTML
-        // displayBookmarkedEventsText += `<li>${userString}</li>`
-
-        displayBookmarkedEventsText += `${userString}\n`
-        }
-        console.log(displayBookmarkedEventsText);
- }
- displayBookmarkedEvents();
-
 if (typeof module != 'undefined'){
     module.exports = { EventRecommender, User,  Event} 
 }

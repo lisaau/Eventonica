@@ -9,6 +9,7 @@ $(document).ready( () => {
     eventRecommender.addEvent("Event 4", new Date(2020, 05, 05), "Art and Theater", 44444, "Description on Event 4");
     eventRecommender.saveUserEvent(12346, 22222)
     eventRecommender.saveUserEvent(12346, 11111)
+    eventRecommender.saveUserEvent(12345, 11111)
 
     const eventRecommenderUsers = [];
     for (let user of eventRecommender.users) {

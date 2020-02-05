@@ -30,10 +30,9 @@ describe("EventRecommender", () => {
       it("adds an event to a user's personal event array by inputting the user and event ID", () => {
         er.addUser("name", 12346);
         er.saveUserEvent(12346, 11111);
-        expect(er.users.length).toEqual(1);
-        expect(er.getUserByID(12346).userName).toEqual("name");
-        expect(er.getUserByID(12346).personalEvents.length).toEqual(1);
-        expect(er.getUserByID(12346).personalEvents[0].eventID).toEqual(11111);
+        expect(er.bookmarkedEvents[12346].length).toEqual(1);
+        er.saveUserEvent(12346, 22222);
+        expect(er.bookmarkedEvents[12346].length).toEqual(2);
       });
     });
   
