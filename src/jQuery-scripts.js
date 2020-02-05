@@ -35,6 +35,7 @@ $(document).ready( () => {
         let id = parseInt($("#add-user-id").val()); 
 
         eventRecommender.addUser(name, id);
+        
         displayUsers()
     })
     
@@ -64,11 +65,8 @@ $(document).ready( () => {
         let category = $("#add-event-category").val();
         let description = $("#add-event-description").val();
         
-        if (name && id && date && category && description) {
-            $("#add-event-announcement").empty();
-            eventRecommender.addEvent(name, date, category, id, description);
-            displayEvents()
-        } 
+        eventRecommender.addEvent(name, date, category, id, description);
+        displayEvents()
     })
 
     $("#delete-event").submit(() => {
@@ -77,7 +75,6 @@ $(document).ready( () => {
         displayEvents();
     })
 
-    // DOES NOT WORK HOW I WANT IT TO. ADD DATE PICKER?
     $("#date-search").submit(() => {
         let year = parseInt($("#date-search-year").val());
         let month = parseInt($("#date-search-month").val());
@@ -119,25 +116,30 @@ $(document).ready( () => {
         }
     })
 
+
     function displayBookmarkedEvents() {
         let displayBookmarkedEventsText = '';
+        
         for (let userid in eventRecommender.bookmarkedEvents) { 
-            displayBookmarkedEventsText += `${userid}: `;
-            let user = eventRecommender.bookmarkedEvents[userid];
-            let username = eventRecommender.getUserByID(userid);
-            console.log(username);
+            // start string with user's name (ID -> name)
+            let userString = `${eventRecommender.getUserByID( parseInt(userid) ).userName}: `;
+
+            let userSavedEvents = eventRecommender.bookmarkedEvents[userid]; 
             
-            let filteredEvents = user.filter( val => val.length !== 0)
-            for (let eventid of filteredEvents)
-            displayBookmarkedEventsText += `${eventRecommender.getEventByID(eventid).eventName}, `;
-            // console.log(filteredEvents)
-            // console.log(userid)
-            // console.log(eventRecommender.bookmarkedEvents[userid])
+            // getting event names for events in userSavedEvents
+            for (let [i, eventid] of userSavedEvents.entries()) {
+                let nameOfEvent = eventRecommender.getEventByID(eventid).eventName;
+    
+                // format string different if at the last element of array
+                (userSavedEvents.length - 1 === i) ? userString += `${nameOfEvent}` : userString += `${nameOfEvent}, `
+            }
+            //USE THIS FOR HTML
+            displayBookmarkedEventsText += `<li>${userString}</li>`
+    
+            // displayBookmarkedEventsText += `${userString}\n`
         }
+        
         $("#saved-events-users").html(displayBookmarkedEventsText);
-        // console.log(eventRecommender.bookmarkedEvents)
-        // console.log(eventRecommender.getEventByID(22222).eventName)
-        // console.log(displayBookmarkedEventsText)
      }
  
      displayBookmarkedEvents();
