@@ -37,9 +37,9 @@ class EventRecommender {
         this.users = this.users.filter(user => user.userID !== userID);
     }
    
-    deleteEvent(title) {
+    deleteEvent(eventID) {
     // Deletes the Event from the system by the name of the event
-        this.events = this.events.filter(event => event.eventName !== title);
+        this.events = this.events.filter(event => event.eventID !== eventID);
         // return this.users;
     }
 

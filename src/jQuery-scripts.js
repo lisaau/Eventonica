@@ -34,33 +34,15 @@ $(document).ready( () => {
     displayUsers();
     
     
-    $("#add-user-submit").click((event) => {
-        event.preventDefault();
+    $("#add-user").submit(() => {
         let name = $("#add-user-name").val();
-        let id = parseInt($("#add-user-id").val());
-        
-        console.log("before adding a user: ", eventRecommender);
-        console.log("array before adding a user: ", eventRecommenderUsers);
-        
-        if (name && id) {
-            $("#add-user-announcement").empty();
-            eventRecommender.addUser(name, id);
-            let newUser = eventRecommender.users[eventRecommender.users.length - 1] //OPTIONAL??
-            eventRecommenderUsers.push(newUser); //OPTIONAL??
-            displayUsers()
-        } else {
-            $("#add-user-announcement").html("Please provide a User ID and User Name")
-        }
-        
-        console.log("after adding a user: ", eventRecommender);
-        console.log("array after adding a user: ", eventRecommenderUsers);
-        
-        // $("#all-users").append(`<li>${newUser.userName}</li>`)
+        let id = parseInt($("#add-user-id").val()); 
+
+        eventRecommender.addUser(name, id);
+        displayUsers()
     })
     
-    $("#delete-user-submit").click((event) => {
-        event.preventDefault();
-        $("#add-user-announcement").empty(); // DELETE LATER WHEN WE REFRESH PAGE
+    $("#delete-user").submit(() => {
         let id = parseInt($("#delete-user-id").val());
         eventRecommender.deleteUser(id);
         displayUsers();
@@ -77,8 +59,9 @@ $(document).ready( () => {
 
     displayEvents();
 
-    $("#add-event-submit").click((event) => {
-        event.preventDefault();
+    $("#add-event").submit((event) => {
+        // event.preventDefault();
+        console.log("add event button is clicked")
         let id = parseInt($("#add-event-id").val());
         let name = $("#add-event-name").val();
         let date = $("#add-event-date").val();
@@ -89,16 +72,10 @@ $(document).ready( () => {
             $("#add-event-announcement").empty();
             eventRecommender.addEvent(name, date, category, id, description);
             displayEvents()
-        } else {
-            $("#add-event-announcement").html("Please complete all fields")
-        }
-
-
+        } 
     })
 
-    $("#delete-event-submit").click((event) => {
-        event.preventDefault();
-        $("#add-user-announcement").empty(); // DELETE LATER WHEN WE REFRESH PAGE
+    $("#delete-event").submit(() => {
         let id = parseInt($("#delete-event-id").val());
         eventRecommender.deleteEvent(id);
         displayEvents();

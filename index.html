@@ -18,15 +18,13 @@
             </ul>
 
             <h3>Add User</h3>
-            <form id="add-user">
+            <form id="add-user" action="#">
                 <label>User ID:</label>
-                <input type="text" id="add-user-id">
+                <input type="number" id="add-user-id" required>
                 <br/>
                 <label>User name:</label>
-                <input type="text" id="add-user-name">
+                <input type="text" id="add-user-name" required>
                 <br/>
-                <!-- Add more form fields here -->
-                <p id="add-user-announcement"></p>
                 <input type="submit" id="add-user-submit">
             </form>
         </div>
@@ -51,32 +49,31 @@
             </ul>
 
             <h3>Add Event</h3>
-            <form id="add-event">
+            <form id="add-event" action="#all-events">
                 <label>Event ID:</label>
-                <input type="text" id="add-event-id">
+                <input type="number" min="1" id="add-event-id" required>
                 <br/>
                 <label>Event name:</label>
-                <input type="text" id="add-event-name">
+                <input type="text" id="add-event-name" required>
                 <br/>
                 <label>Event date:</label>
-                <input type="text" id="add-event-date">
+                <input type="date" id="add-event-date" required>
                 <br/>
                 <label>Event category:</label>
-                <input type="text" id="add-event-category">
+                <input type="text" id="add-event-category" required>
                 <br/>
                 <label>Event description:</label>
-                <input type="text" id="add-event-description">
+                <input type="text" id="add-event-description" required>
                 <br/>
                 <input type="submit" id="add-event-submit">
-                <p id="add-event-announcement"></p>
             </form>
         </div>
 
         <div>
             <h3>Delete Event</h3>
-            <form id="delete-event">
+            <form id="delete-event" action="#all-events">
                 <label>Event ID:</label>
-                <input type="text" id="delete-event-id">
+                <input type="number" min="1" id="delete-event-id">
                 <br/>
                 <input type="submit">
             </form>
