@@ -4,9 +4,9 @@ $(document).ready( () => {
     eventRecommender.addUser("person2", 12346);
     eventRecommender.addUser("person3", 12347);
     eventRecommender.addEvent("Event 1", new Date(2020, 01, 03), "Concert", 11111,  "Description on Event 1");
-    eventRecommender.addEvent("Event 2", new Date(2020, 02, 03), "Concert", 22222, "Description on Event 2");
-    eventRecommender.addEvent("Event 3", new Date(2020, 04, 03), "Sport", 33333, "Description on Event 3");
-    eventRecommender.addEvent("Event 4", new Date(2020, 05, 03), "Art and Theater", 44444, "Description on Event 4");
+    eventRecommender.addEvent("Event 2", new Date(2020, 02, 14), "Concert", 22222, "Description on Event 2");
+    eventRecommender.addEvent("Event 3", new Date(2020, 04, 17), "Sport", 33333, "Description on Event 3");
+    eventRecommender.addEvent("Event 4", new Date(2020, 05, 05), "Art and Theater", 44444, "Description on Event 4");
 
     const eventRecommenderUsers = [];
     for (let user of eventRecommender.users) {
@@ -77,31 +77,30 @@ $(document).ready( () => {
 
     // DOES NOT WORK HOW I WANT IT TO. ADD DATE PICKER?
     $("#date-search").submit(() => {
-        // let dateString = `${$("#date-search-year").val()},${$("#date-search-month").val()},${$("#date-search-day").val()}`; 
-        // console.log(dateString);
-        // let dateObject = new Date(dateString);
-        // console.log(dateObject);
+        let year = parseInt($("#date-search-year").val());
+        let month = parseInt($("#date-search-month").val());
+        let day = parseInt($("#date-search-day").val());
         
-        // console.log(eventRecommender);
+        console.log(year, month, day)
+         
+        let result = [];
         
-        let yearString = $("#date-search-year");
-        let monthString = $("#date-search-month");
-        let dayString = $("#date-search-day");
-
-        let filteredEvents = eventRecommender.findEventsByDate(dateObject); 
-        console.log(filteredEvents);
-        console.log(!$("#date-search-year").val());
-        
-
-        if (!$("#date-search-year").val() || !$("#date-search-month").val() || !$("#date-search-day").val()) {
-            $("#date-search-result").html("Please provide a valid date")
-        } else if (filteredEvents.length === 0) {
-            $("#date-search-result").html(`No events found on ${dateObject}`)
-        } else {
-            for (let event of filteredEvents) {
-                $("#date-search-result").append(`<li>${event.eventName} - ${event.category}</li>`)
+        for (let event of eventRecommender.events) {
+            console.log(event.date.getMonth());
+            
+            if ((Number.isNaN(year) || year === event.date.getFullYear()) &&
+            (Number.isNaN(month) || month === event.date.getMonth() + 1) &&
+            (Number.isNaN(day) || day === event.date.getDate())) {
+                result.push(event);
             }
         }
+        let message = '';
+        console.log(result)
+        for (let element of result) {
+            message += `<li>${element.eventName}</li>`;
+        }
+
+        $("#date-search-result").html(message);    
     })
 
     $("#category-search").submit(() => { 
@@ -116,6 +115,14 @@ $(document).ready( () => {
             }
             $("#category-search-result").html(categoryMessage);
         }
+    })
+
+    $("#saved-events-users").submit( () => {
+        let userid = $("#save-user-id").val();
+        let eventid = $("#save-event-id").val();
+        // updates eventRecommender 
+        eventRecommender.saveUserEvent(userid, eventid);
+        console.log(eventRecommender)
     })
     
 })

@@ -73,7 +73,7 @@
             <h3>Delete Event</h3>
             <form id="delete-event" action="#all-events">
                 <label>Event ID:</label>
-                <input type="number" min="1" id="delete-event-id">
+                <input type="number" min="1" id="delete-event-id" required>
                 <br/>
                 <input type="submit">
             </form>
@@ -122,7 +122,10 @@
 
     <div>
         <h3>Save Event for User</h3>
-        <form id="save-user-event">
+        <ul id="saved-events-users">
+            <!-- Use jQuery to display all Users here -->
+        </ul>
+        <form id="save-user-event" action="#saved-events-users">
             <label>User ID:</label>
             <input type="text" id="save-user-id">
             <br/>

@@ -5,10 +5,10 @@ describe("EventRecommender", () => {
   
     beforeEach(() => {
       er = new EventRecommender();
-      er.addEvent("Event 1", new Date(2020, 01, 03), "Concert");
-      er.addEvent("Event 2", new Date(2020, 02, 03), "Concert");
-      er.addEvent("Event 3", new Date(2020, 04, 03), "Sport");
-      er.addEvent("Event 4", new Date(2020, 05, 03), "Art and Theater");
+      er.addEvent("Event 1", new Date(2020, 01, 03), "Concert", 11111,  "Description on Event 1");
+      er.addEvent("Event 2", new Date(2020, 02, 03), "Concert", 22222, "Description on Event 2");
+      er.addEvent("Event 3", new Date(2020, 04, 03), "Sport", 33333, "Description on Event 3");
+      er.addEvent("Event 4", new Date(2020, 05, 03), "Art and Theater", 44444, "Description on Event 4");
     });
   
     describe("addEvent", () => {
@@ -21,28 +21,44 @@ describe("EventRecommender", () => {
   
     describe("addUser", () => {
       it("adds a new User to the system", () => {
-        er.addUser("User's Name");
+        er.addUser("User's Name", 12345);
         expect(er.users.length).toEqual(1);
       });
     });
   
     describe("saveUserEvent", () => {
-      it("adds an event to a user's personal event array", () => {
-        er.addUser("UserName"); // passing in a string to create a User object
-        er.addEvent("EventObject"); // pass in a string to create Event object
-        er.saveUserEvent(new User("UserName"), new Event("EventObject")); // arguments are User and Event objects
-        expect(er.users[er.users.length - 1].personalEvents.length).toEqual(1);
-
-        // should receive error message if the User has not been added
-        expect(er.saveUserEvent(new User("UserName2"), new Event("EventObject"))).toEqual('Please add this user first before saving an event.');
+      it("adds an event to a user's personal event array by inputting the user and event ID", () => {
+        er.addUser("name", 12346);
+        er.saveUserEvent(12346, 11111);
+        expect(er.users.length).toEqual(1);
+        expect(er.getUserByID(12346).userName).toEqual("name");
+        expect(er.getUserByID(12346).personalEvents.length).toEqual(1);
+        expect(er.getUserByID(12346).personalEvents[0].eventID).toEqual(11111);
       });
     });
   
+    describe("getUserByID", () => {
+      it("returns an array with a user given an ID", () => {
+        er.addUser("User's Name", 12345);
+        expect(typeof er.getUserByID(12345)).toEqual("object");
+        expect(er.getUserByID(12345).userID).toEqual(12345);
+        expect(er.getUserByID("notaRealID")).toEqual(undefined)
+      })
+    })
+
+    describe("getEventByID", () => {
+      it("returns an array with an event given an ID", () => {
+        expect(typeof er.getEventByID(11111)).toEqual("object");
+        expect(er.getEventByID(11111).eventID).toEqual(11111);
+        expect(er.getEventByID("notaRealID")).toEqual(undefined);
+      })
+    })
+
     describe("deleteUser", () => {
       it("removes a User from the system", () => {
         er.addUser("User's Name", 12345);
         er.deleteUser(12345);
-        expect(er.users.length).toEqual(0);
+        // expect(er.users.length).toEqual(0);
       });
     });
   

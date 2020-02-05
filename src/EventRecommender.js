@@ -8,6 +8,7 @@ class EventRecommender {
     // All main properties should go here.
         this.events = [];
         this.users = [];
+        this.bookmarkedEvents = {}
     }
 
     addEvent(eventName, date, category, eventID, description) {
@@ -20,16 +21,33 @@ class EventRecommender {
         this.users.push(new User(userName, userID));
     }
 
-    saveUserEvent(personObject, eventObject){
-        // checks user's name and compares it with the names in this.user. not as robust since people can have the same name but it works for now
-        for (let person of this.users) {
-            // if the user already exists in this.users
-            if (person.userName === personObject.userName) {
-                person.personalEvents.push(eventObject);
-            } else {
-                return "Please add this user first before saving an event."
-            }
+    saveUserEvent(userid, eventid){
+        // checks if user and event exists already
+        let user = this.getUserByID(userid);
+        let event = this.getEventByID(eventid);
+        if (!user || !event) {
+            return "Please make sure both the user and event exists on our platform"
         }
+
+        if (!this.bookmarkedEvents[user.getUserID()]) {
+            this.bookmarkedEvents[user.getUserID()] = [];
+        }
+        this.bookmarkedEvents[user.getUserID()].push(eventid);
+        console.log(this.bookmarkedEvents)
+    }
+
+    // returns user object
+    getUserByID(userid) {
+        return this.users.filter(user => user.userID === userid)[0];
+    }
+    
+    // returns event object
+    getEventByID(eventid) {
+        return this.events.filter(event => event.eventID === eventid)[0];
+    }
+
+    getBookmarkedEventsByUser(userid) {
+        return this.bookmarkedEvents[userid] || [];
     }
 
     deleteUser(userID) {
@@ -60,8 +78,7 @@ class EventRecommender {
     findEventsByCategory(category){
     // Returns all events in a given category
         return this.events.filter(event => {
-            let formattedCatgegory = event.category.toLowerCase();
-            return formattedCatgegory === category.toLowerCase();
+            return event.category.toLowerCase() === category.toLowerCase();
         });
     }
 }
@@ -71,7 +88,7 @@ class Event {
         this.eventName = eventName;
         this.date = date; // expect date object in input
         this.category = category;
-        this.eventID = eventID;
+        this.eventID = eventID || Math.floor(Math.random * 10000);
         this.description = description;
     }
 
@@ -83,10 +100,33 @@ class Event {
 class User {
     constructor(userName, userID) {
         this.userName = userName;
-        this.userID = userID;
-        this.personalEvents = [];
+        this.userID = userID || Math.floor(Math.random * 10000);
+    }
+    
+    getUserID() {
+        return this.userID;
     }
 }
+
+const eventRecommender = new EventRecommender();
+eventRecommender.addUser("person1", 12345);
+eventRecommender.addUser("person2", 12346);
+eventRecommender.addUser("person3", 12347);
+eventRecommender.addEvent("Event 1", new Date(2020, 01, 03), "Concert", 11111,  "Description on Event 1");
+eventRecommender.addEvent("Event 2", new Date(2020, 02, 14), "Concert", 22222, "Description on Event 2");
+eventRecommender.addEvent("Event 3", new Date(2020, 04, 17), "Sport", 33333, "Description on Event 3");
+eventRecommender.addEvent("Event 4", new Date(2020, 05, 05), "Art and Theater", 44444, "Description on Event 4");
+eventRecommender.saveUserEvent(12345, 11111);
+eventRecommender.saveUserEvent(12345, 22222);
+eventRecommender.saveUserEvent(12346, 22222);
+// eventRecommender.saveUserEvent(12340, 11111);
+// console.log(eventRecommender.users);
+// console.log(eventRecommender.users[0]);
+console.log(eventRecommender.getBookmarkedEventsByUser(12345));
+// console.log(eventRecommender.getUserByID(1));
+// console.log(eventRecommender.getEventByID(111110));
+
+
 
 if (typeof module != 'undefined'){
     module.exports = { EventRecommender, User,  Event} 
