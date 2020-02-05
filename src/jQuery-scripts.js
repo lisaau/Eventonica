@@ -7,6 +7,8 @@ $(document).ready( () => {
     eventRecommender.addEvent("Event 2", new Date(2020, 02, 14), "Concert", 22222, "Description on Event 2");
     eventRecommender.addEvent("Event 3", new Date(2020, 04, 17), "Sport", 33333, "Description on Event 3");
     eventRecommender.addEvent("Event 4", new Date(2020, 05, 05), "Art and Theater", 44444, "Description on Event 4");
+    eventRecommender.saveUserEvent(12346, 22222)
+    eventRecommender.saveUserEvent(12346, 11111)
 
     const eventRecommenderUsers = [];
     for (let user of eventRecommender.users) {
@@ -117,14 +119,35 @@ $(document).ready( () => {
         }
     })
 
+    function displayBookmarkedEvents() {
+        let displayBookmarkedEventsText = '';
+        for (let userid in eventRecommender.bookmarkedEvents) { 
+            displayBookmarkedEventsText += `${userid}: `;
+            let user = eventRecommender.bookmarkedEvents[userid];
+            let username = eventRecommender.getUserByID(userid);
+            console.log(username);
+            
+            let filteredEvents = user.filter( val => val.length !== 0)
+            for (let eventid of filteredEvents)
+            displayBookmarkedEventsText += `${eventRecommender.getEventByID(eventid).eventName}, `;
+            // console.log(filteredEvents)
+            // console.log(userid)
+            // console.log(eventRecommender.bookmarkedEvents[userid])
+        }
+        $("#saved-events-users").html(displayBookmarkedEventsText);
+        // console.log(eventRecommender.bookmarkedEvents)
+        // console.log(eventRecommender.getEventByID(22222).eventName)
+        // console.log(displayBookmarkedEventsText)
+     }
+ 
+     displayBookmarkedEvents();
+
     $("#save-user-event").submit( () => {
         let userid = parseInt($("#save-user-id").val());
         let eventid = parseInt($("#save-event-id").val());
         // updates eventRecommender 
         eventRecommender.saveUserEvent(userid, eventid);
 
-        for (let key in EventRecommender.bookmarkedEvents) {
-            EventRecommender.getEventByID
-        }
+        displayBookmarkedEvents()
     })    
 })
