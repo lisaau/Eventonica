@@ -21,6 +21,7 @@ class EventRecommender {
         this.users.push(new User(userName, userID));
     }
 
+    // expects numbers for the ID's
     saveUserEvent(userid, eventid){
         // checks if user and event exists already
         let user = this.getUserByID(userid);
@@ -33,7 +34,6 @@ class EventRecommender {
             this.bookmarkedEvents[user.getUserID()] = [];
         }
         this.bookmarkedEvents[user.getUserID()].push(eventid);
-        console.log(this.bookmarkedEvents)
     }
 
     // returns user object
@@ -108,21 +108,21 @@ class User {
     }
 }
 
-const eventRecommender = new EventRecommender();
-eventRecommender.addUser("person1", 12345);
-eventRecommender.addUser("person2", 12346);
-eventRecommender.addUser("person3", 12347);
-eventRecommender.addEvent("Event 1", new Date(2020, 01, 03), "Concert", 11111,  "Description on Event 1");
-eventRecommender.addEvent("Event 2", new Date(2020, 02, 14), "Concert", 22222, "Description on Event 2");
-eventRecommender.addEvent("Event 3", new Date(2020, 04, 17), "Sport", 33333, "Description on Event 3");
-eventRecommender.addEvent("Event 4", new Date(2020, 05, 05), "Art and Theater", 44444, "Description on Event 4");
-eventRecommender.saveUserEvent(12345, 11111);
-eventRecommender.saveUserEvent(12345, 22222);
-eventRecommender.saveUserEvent(12346, 22222);
+// const eventRecommender = new EventRecommender();
+// eventRecommender.addUser("person1", 12345);
+// eventRecommender.addUser("person2", 12346);
+// eventRecommender.addUser("person3", 12347);
+// eventRecommender.addEvent("Event 1", new Date(2020, 01, 03), "Concert", 11111,  "Description on Event 1");
+// eventRecommender.addEvent("Event 2", new Date(2020, 02, 14), "Concert", 22222, "Description on Event 2");
+// eventRecommender.addEvent("Event 3", new Date(2020, 04, 17), "Sport", 33333, "Description on Event 3");
+// eventRecommender.addEvent("Event 4", new Date(2020, 05, 05), "Art and Theater", 44444, "Description on Event 4");
+// eventRecommender.saveUserEvent(12345, 11111);
+// eventRecommender.saveUserEvent(12345, 22222);
+// eventRecommender.saveUserEvent(12346, 22222);
 // eventRecommender.saveUserEvent(12340, 11111);
 // console.log(eventRecommender.users);
 // console.log(eventRecommender.users[0]);
-console.log(eventRecommender.getBookmarkedEventsByUser(12345));
+// console.log(eventRecommender.getBookmarkedEventsByUser(12345));
 // console.log(eventRecommender.getUserByID(1));
 // console.log(eventRecommender.getEventByID(111110));
 

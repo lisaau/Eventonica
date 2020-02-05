@@ -117,12 +117,14 @@ $(document).ready( () => {
         }
     })
 
-    $("#saved-events-users").submit( () => {
-        let userid = $("#save-user-id").val();
-        let eventid = $("#save-event-id").val();
+    $("#save-user-event").submit( () => {
+        let userid = parseInt($("#save-user-id").val());
+        let eventid = parseInt($("#save-event-id").val());
         // updates eventRecommender 
         eventRecommender.saveUserEvent(userid, eventid);
-        console.log(eventRecommender)
-    })
-    
+
+        for (let key in EventRecommender.bookmarkedEvents) {
+            EventRecommender.getEventByID
+        }
+    })    
 })
