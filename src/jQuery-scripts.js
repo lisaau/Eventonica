@@ -12,17 +12,11 @@ $(document).ready( () => {
     for (let user of eventRecommender.users) {
         eventRecommenderUsers.push(user);
     }
-
     const eventRecommenderEvents = [];
     for (let event of eventRecommender.events) {
         eventRecommenderEvents.push(event);
     }
-    //console.log("default", eventRecommenderUsers);
-    
 
-    // PUTTING THIS IN A FUNCTION IS UNNECESSARY?
-    // NEED TO ONLY DISPLAY THE LIST ONCE, NOT APPEND TO IT?
-    // STORE EVERYTHING IN AN ARRAY AND DISPLAY IT WHEN NEEDED?
     function displayUsers() {
         let displayUserText = '';
         for (let user of eventRecommender.users) {
@@ -82,15 +76,17 @@ $(document).ready( () => {
     })
 
     // DOES NOT WORK HOW I WANT IT TO. ADD DATE PICKER?
-    $("#date-search-submit").click((e) => {
-        e.preventDefault();  
-        let dateString = `${$("#date-search-year").val()},${$("#date-search-month").val()},${$("#date-search-day").val()}`; 
-        console.log(dateString);
-        let dateObject = new Date(dateString);
-        console.log(dateObject);
+    $("#date-search").submit(() => {
+        // let dateString = `${$("#date-search-year").val()},${$("#date-search-month").val()},${$("#date-search-day").val()}`; 
+        // console.log(dateString);
+        // let dateObject = new Date(dateString);
+        // console.log(dateObject);
         
-        console.log(eventRecommender);
+        // console.log(eventRecommender);
         
+        let yearString = $("#date-search-year");
+        let monthString = $("#date-search-month");
+        let dayString = $("#date-search-day");
 
         let filteredEvents = eventRecommender.findEventsByDate(dateObject); 
         console.log(filteredEvents);
@@ -108,19 +104,17 @@ $(document).ready( () => {
         }
     })
 
-    $("#category-search-submit").click((e) => {
-        e.preventDefault();  
+    $("#category-search").submit(() => { 
         let category = $("#category-search-id").val();
         let filteredEvents = eventRecommender.findEventsByCategory(category); 
-        console.log(filteredEvents);
         if (filteredEvents.length === 0) {
-            $("#category-search-result").html("Please enter a category");
+            $("#category-search-result").html("No events found");
         } else {
             let categoryMessage = '';
             for (let event of filteredEvents) {
                 categoryMessage += `<li>${event.eventName} - ${event.category}</li>`;
             }
-            $("#category-search-result").html(categoryMessage)
+            $("#category-search-result").html(categoryMessage);
         }
     })
     

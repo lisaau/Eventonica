@@ -48,8 +48,8 @@ describe("EventRecommender", () => {
   
     describe("deleteEvent", () => {
       it("removes the event from the system", () => {
-        er.addEvent("Event's Name");
-        er.deleteEvent("Event's Name");
+        er.addEvent("Event's Name", new Date(), "category", 12345);
+        er.deleteEvent(12345);
         expect(er.events.length).toEqual(4);
       });
     });

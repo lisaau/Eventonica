@@ -86,11 +86,11 @@
     <h2>Event Search and Save</h2>
     <div>
         <h3>Find Events by Date</h3>
-        <form id="date-search">
+        <form id="date-search" action="#date-search">
             <label>Event date:</label>
-            <input type="text" placeholder="YYYY" id="date-search-year">
-            <input type="text" placeholder="MM" id="date-search-month">
-            <input type="text" placeholder="DD" id="date-search-day">
+            <input type="text" placeholder="Year" id="date-search-year">
+            <input type="text" placeholder="Month" id="date-search-month">
+            <input type="text" placeholder="Day" id="date-search-day">
             <br/>
             <input type="submit" id="date-search-submit">
         </form>
@@ -102,9 +102,15 @@
 
     <div>
         <h3>Find Events by Category</h3>
-        <form id="category-search">
+        <form id="category-search" action="#category-search">
             <label>Event category:</label>
-            <input type="text" id="category-search-id">
+            <!-- <input type="text" id="category-search-id"> -->
+            <select id="category-search-id">
+                <option value="concert">Concert</option>
+                <option value="sport">Sport</option>
+                <option value="art and theater">Art and Theater</option>
+                <option value="comedy">Comedy</option>
+              </select>
             <br/>
             <input type="submit" id="category-search-submit">
         </form>
