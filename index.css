@@ -2,16 +2,30 @@ h1 {
     color: blue;
 }
 
+h2 {
+    color: #425478;
+}
+
 .container {
     display: flex;
     flex-direction: column;
 }
 
-.main-section-left {
+.main-section {
     padding: 50px;
+    background-color: white!important;
+}
+
+
+input[type=submit] {
+    background-color: #1e9eee;
 }
 
 img {
     width: 70%;
+
 }
 
+.col {
+    background-color: #f8f9fa;
+}
