@@ -1,4 +1,22 @@
 h1 {
-    color: blue
+    color: blue;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-section-left {
+    padding: 50px;
+}
+
+img {
+    width: 70%;
+}
+
+/* @media (max-width: 550px) {
+    img {
+        width: 100%;
+    }
+} */

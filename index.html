@@ -3,6 +3,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+        <title>Event Recommender</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="index.css">
         
@@ -36,17 +37,18 @@
         </nav>
 
         <div class="container">
-            
             <div class="row main-section">
                 <div class="col main-section-left">
                     <h1>Event Recommender</h1>
-                    <p>Description on Event Recommender</p>
+                    <p>Eventonica is a web app to manage events. Users of the site will be able to add and delete events, mark themselves as attending events, search for events, and see which events are most popular.</p>
                 </div>
                 <div class="col main-section-right">
                     <img src="event-recommender-image.png" alt="event-image">
                 </div>
             </div>
+        </div>
 
+        <div class="container">
             <h2 id="user-management-header">User Management</h2>
             <div>
                 <h3>All Users</h3>
@@ -56,10 +58,10 @@
     
                 <h3>Add User</h3>
                 <form id="add-user" action="#">
-                    <label>User ID:</label>
+                    <label for="add-user-id">User ID:</label>
                     <input type="number" id="add-user-id" required>
                     <br/>
-                    <label>User name:</label>
+                    <label for="add-user-name">User name:</label>
                     <input type="text" id="add-user-name" required>
                     <br/>
                     <input type="submit" id="add-user-submit">
@@ -69,15 +71,18 @@
             <div>
                 <h3>Delete User</h3>
                 <form id="delete-user">
-                    <label>User ID:</label>
+                    <label for="delete-user-id">User ID:</label>
                     <input type="text" id="delete-user-id">
                     <br/>
                     <input type="submit" id="delete-user-submit">
                 </form>
             </div>
+
+        </div>
+
+        <br/>
     
-            <br/>
-    
+        <div class="container">
             <h2 id="event-management-header">Event Management</h2>
             <div>
                 <h3>All Events</h3>
@@ -87,19 +92,19 @@
     
                 <h3>Add Event</h3>
                 <form id="add-event" action="#all-events">
-                    <label>Event ID:</label>
+                    <label for="add-event-id">Event ID:</label>
                     <input type="number" min="1" id="add-event-id" required>
                     <br/>
-                    <label>Event name:</label>
+                    <label for="add-event-name">Event name:</label>
                     <input type="text" id="add-event-name" required>
                     <br/>
-                    <label>Event date:</label>
+                    <label for="add-event-date">Event date:</label>
                     <input type="date" id="add-event-date" required>
                     <br/>
-                    <label>Event category:</label>
+                    <label for="add-event-category">Event category:</label>
                     <input type="text" id="add-event-category" required>
                     <br/>
-                    <label>Event description:</label>
+                    <label for="add-event-description">Event description:</label>
                     <input type="text" id="add-event-description" required>
                     <br/>
                     <input type="submit" id="add-event-submit">
@@ -109,23 +114,23 @@
             <div>
                 <h3>Delete Event</h3>
                 <form id="delete-event" action="#all-events">
-                    <label>Event ID:</label>
+                    <label for="delete-event-id">Event ID:</label>
                     <input type="number" min="1" id="delete-event-id" required>
                     <br/>
                     <input type="submit">
                 </form>
             </div>
-    
-            <br/>
+        </div>
         
+        <div class="container">
             <h2 id="event-search-and-save-header">Event Search and Save</h2>
             <div>
                 <h3>Find Events by Date</h3>
                 <form id="date-search" action="#date-search">
                     <label>Event date:</label>
-                    <input type="text" placeholder="Year" id="date-search-year">
-                    <input type="text" placeholder="Month" id="date-search-month">
-                    <input type="text" placeholder="Day" id="date-search-day">
+                    <input type="text" placeholder="Year" id="date-search-year" aria-label="Year">
+                    <input type="text" placeholder="Month" id="date-search-month" aria-label="Month">
+                    <input type="text" placeholder="Day" id="date-search-day" aria-label="Day">
                     <br/>
                     <input type="submit" id="date-search-submit">
                 </form>
@@ -135,10 +140,11 @@
                 </ol>
             </div>
         
+
             <div>
                 <h3>Find Events by Category</h3>
                 <form id="category-search" action="#category-search">
-                    <label>Event category:</label>
+                    <label for="category-search-id">Event category:</label>
                     <!-- <input type="text" id="category-search-id"> -->
                     <select id="category-search-id">
                         <option value="concert">Concert</option>
@@ -161,17 +167,17 @@
                     <!-- Use jQuery to display all Users here -->
                 </ul>
                 <form id="save-user-event" action="#saved-events-users">
-                    <label>User ID:</label>
+                    <label for="save-user-id">User ID:</label>
                     <input type="text" id="save-user-id">
                     <br/>
-                    <label>Event ID:</label>
+                    <label for="save-event-id">Event ID:</label>
                     <input type="text" id="save-event-id">
                     <br/>
                     <input type="submit">
                 </form>
             </div>
-             
-        </div>
+        </div>   
+        
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
