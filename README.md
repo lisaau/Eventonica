@@ -8,3 +8,7 @@ Eventonica is a web app to manage events from Techtonica's curriculum outlined h
 4. [Part 4 - API's](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part4-apis.md)
 5. [Part 5 - Express Backend](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part5-express-backend.md)
 6. [Part 6 - Postgres Database](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part6-postgres.md)
+
+
+
+View the web app: https://lisaau.github.io/Eventonica/
