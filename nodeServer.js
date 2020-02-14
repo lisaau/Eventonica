@@ -8,6 +8,9 @@ http.createServer(function (request, response) {
     var filePath = '.' + request.url;
     if (filePath == './') {
         filePath = './index.html';
+    } else if (filePath == './lisa') {
+        response.writeHead(302,{Location: 'https://github.com/lisaau/Eventonica'});
+        response.end();
     }
 
     var extname = String(path.extname(filePath)).toLowerCase();
