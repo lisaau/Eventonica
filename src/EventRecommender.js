@@ -5,7 +5,6 @@ if (!moment) {
 
 class EventRecommender {
     constructor() {
-    // All main properties should go here.
         this.events = [];
         this.users = [];
         this.bookmarkedEvents = {}
@@ -63,7 +62,6 @@ class EventRecommender {
     deleteEvent(eventID) {
     // Deletes the Event from the system by the name of the event
         this.events = this.events.filter(event => event.eventID !== eventID);
-        // return this.users;
     }
 
     findEventsByDate(dateObject){

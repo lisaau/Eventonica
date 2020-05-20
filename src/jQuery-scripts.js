@@ -1,9 +1,9 @@
 $(document).ready( () => {
+    // Pre-populate with data
     const eventRecommender = new EventRecommender();
     eventRecommender.addUser("Lisa", 12345);
     eventRecommender.addUser("Kim", 12346);
-    eventRecommender.addUser("Bob", 12347);
-    eventRecommender.addEvent("Dumpling Down – Lunar New Year Food Festival", new Date(2020, 01, 03), "Food and Drink", 11111, "The Biggest Lunar New Year Food Festival in San Francisco!");
+    eventRecommender.addEvent("Lunar New Year Food Festival", new Date(2020, 01, 03), "Food and Drink", 11111, "The Biggest Lunar New Year Food Festival in San Francisco!");
     eventRecommender.addEvent("Incredible Art Gallery Exhibit", new Date(2020, 01, 21), "Art and Theater", 22222, "There will be multiple exhibits of Harry Potter, Disney, Marvel, DC Comics, Star Wars, Anime and parody art on display featuring a variety of artists and available to purchase at affordable pricing.");
     eventRecommender.addEvent("Developer Week", new Date(2020, 01, 12), "Tech", 33333, "Our conferences, tracks, technical workshops and events throughout the week invite you to get lessons, best practices -- and advanced knowledge");
     eventRecommender.addEvent("2020 Levi's Presidio 10 ", new Date(2020, 03, 19), "Sport", 44444, "A fun, family-oriented race in the Presidio of San Francisco.");
@@ -20,6 +20,9 @@ $(document).ready( () => {
         eventRecommenderEvents.push(event);
     }
 
+
+    // ----- USERS ----- //
+    // Display all users when app is loaded
     function displayUsers() {
         let displayUserText = '';
         for (let user of eventRecommender.users) {
@@ -27,11 +30,10 @@ $(document).ready( () => {
         }
         $("#all-users").html(displayUserText);
     }
-    
     displayUsers();
     
-    
     $("#add-user").submit(() => {
+        event.preventDefault();
         let name = $("#add-user-name").val();
         let id = parseInt($("#add-user-id").val()); 
 
@@ -41,25 +43,25 @@ $(document).ready( () => {
     })
     
     $("#delete-user").submit(() => {
+        event.preventDefault();
         let id = parseInt($("#delete-user-id").val());
         eventRecommender.deleteUser(id);
         displayUsers();
     })
     
-
-   function displayEvents() {
-       let displayEventText = '';
-       for (let event of eventRecommender.events) { 
-           displayEventText += `<li>${event.eventID} - <b>${event.eventName}</b> - ${event.getFormattedDate()} - ${event.category} - ${event.description}</li>`;
-       }
-       $("#all-events").html(displayEventText);
+    // ----- EVENTS ----- //
+    // Display all events when app is loaded
+    function displayEvents() {
+        let displayEventText = '';
+        for (let event of eventRecommender.events) { 
+            displayEventText += `<li>${event.eventID} - <b>${event.eventName}</b> - ${event.getFormattedDate()} - ${event.category} - ${event.description}</li>`;
+        }
+        $("#all-events").html(displayEventText);
     }
-
     displayEvents();
 
     $("#add-event").submit((event) => {
-        // event.preventDefault();
-        console.log("add event button is clicked")
+        event.preventDefault();
         let id = parseInt($("#add-event-id").val());
         let name = $("#add-event-name").val();
         let date = $("#add-event-date").val();
@@ -71,23 +73,21 @@ $(document).ready( () => {
     })
 
     $("#delete-event").submit(() => {
+        event.preventDefault();
         let id = parseInt($("#delete-event-id").val());
         eventRecommender.deleteEvent(id);
         displayEvents();
     })
 
     $("#date-search").submit(() => {
+        event.preventDefault();
         let year = parseInt($("#date-search-year").val());
         let month = parseInt($("#date-search-month").val());
         let day = parseInt($("#date-search-day").val());
-        
-        console.log(year, month, day)
          
         let result = [];
         
         for (let event of eventRecommender.events) {
-            console.log(event.date.getMonth());
-            
             if ((Number.isNaN(year) || year === event.date.getFullYear()) &&
             (Number.isNaN(month) || month === event.date.getMonth() + 1) &&
             (Number.isNaN(day) || day === event.date.getDate())) {
@@ -95,7 +95,7 @@ $(document).ready( () => {
             }
         }
         let message = '';
-        console.log(result)
+
         for (let element of result) {
             message += `<li>${element.eventName}</li>`;
         }
@@ -104,6 +104,7 @@ $(document).ready( () => {
     })
 
     $("#category-search").submit(() => { 
+        event.preventDefault();
         let category = $("#category-search-id").val();
         let filteredEvents = eventRecommender.findEventsByCategory(category); 
         if (filteredEvents.length === 0) {
@@ -117,7 +118,8 @@ $(document).ready( () => {
         }
     })
 
-
+    // ----- BOOKMARKED EVENTS ----- //
+    // Display all bookmarked events when app is loaded
     function displayBookmarkedEvents() {
         let displayBookmarkedEventsText = '';
         
@@ -134,18 +136,16 @@ $(document).ready( () => {
                 // format string different if at the last element of array
                 (userSavedEvents.length - 1 === i) ? userString += `${nameOfEvent}` : userString += `${nameOfEvent}, `
             }
-            //USE THIS FOR HTML
+
             displayBookmarkedEventsText += `<li>${userString}</li>`
-    
-            // displayBookmarkedEventsText += `${userString}\n`
         }
         
         $("#saved-events-users").html(displayBookmarkedEventsText);
      }
- 
      displayBookmarkedEvents();
 
     $("#save-user-event").submit( () => {
+        event.preventDefault();
         let userid = parseInt($("#save-user-id").val());
         let eventid = parseInt($("#save-event-id").val());
         // updates eventRecommender 
