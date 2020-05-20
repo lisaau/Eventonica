@@ -13,11 +13,11 @@ The project is split into seven phases covering various topics, some of which ar
 | Project Outline                                              | Project Repo                                                 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Part 1 - Object-Oriented Programming](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part1-objects.md) | [Eventonica]([Eventonica](https://github.com/lisaau/Eventonica)) |
-| [Part 2 - Testing](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part2-testing.md) | [Eventonica]([Eventonica](https://github.com/lisaau/Eventonica)) |
-| [Part 3 - jQuery UI](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part3-jquery-ui.md) | [Eventonica]([Eventonica](https://github.com/lisaau/Eventonica)) |
-| [Part 4 - API's](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part4-apis.md) | [Eventonica-API]([Eventonica-API](https://github.com/lisaau/Eventonica-API)) |
-| [Part 5 - Express Backend](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part5-express-backend.md) | [Eventonica-Express]([Eventonica-With-Express](https://github.com/lisaau/Eventonica-Express)) |
-| [Part 6 - Postgres Database](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part6-postgres.md) | [Eventonica-Postgres]([Eventonica-Postgres](https://github.com/lisaau/Eventonica-Postgres)) |
+| [Part 2 - Testing](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part2-testing.md) | [Eventonica](https://github.com/lisaau/Eventonica)           |
+| [Part 3 - jQuery UI](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part3-jquery-ui.md) | [Eventonica](https://github.com/lisaau/Eventonica)           |
+| [Part 4 - API's](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part4-apis.md) | [Eventonica-API](https://github.com/lisaau/Eventonica-API)   |
+| [Part 5 - Express Backend](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part5-express-backend.md) | [Eventonica-With-Express](https://github.com/lisaau/Eventonica-Express) |
+| [Part 6 - Postgres Database](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part6-postgres.md) | [Eventonica-Postgres](https://github.com/lisaau/Eventonica-Postgres) |
 | [Part 7 - React Frontend](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part7-react.md) | [Eventonica-React](https://github.com/lisaau/Eventonica-React) |
 
 
