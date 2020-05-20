@@ -12,7 +12,7 @@ The project is split into seven phases covering various topics, some of which ar
 
 | Project Outline                                              | Project Repo                                                 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Part 1 - Object-Oriented Programming](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part1-objects.md) | [Eventonica]([Eventonica](https://github.com/lisaau/Eventonica)) |
+| [Part 1 - Object-Oriented Programming](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part1-objects.md) | [Eventonica](https://github.com/lisaau/Eventonica)           |
 | [Part 2 - Testing](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part2-testing.md) | [Eventonica](https://github.com/lisaau/Eventonica)           |
 | [Part 3 - jQuery UI](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part3-jquery-ui.md) | [Eventonica](https://github.com/lisaau/Eventonica)           |
 | [Part 4 - API's](https://github.com/Techtonica/curriculum/blob/master/projects/eventonica/eventonica-part4-apis.md) | [Eventonica-API](https://github.com/lisaau/Eventonica-API)   |
