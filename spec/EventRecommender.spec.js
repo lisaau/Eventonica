@@ -1,4 +1,4 @@
-const { EventRecommender, User, Event } = require('../src/EventRecommender.js'); // Update with your class names and file name
+const { EventRecommender } = require('../src/EventRecommender.js');
 let er; 
 
 describe("EventRecommender", () => {
